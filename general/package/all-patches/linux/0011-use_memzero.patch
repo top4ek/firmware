@@ -1,0 +1,13 @@
+diff --git a/arch/arm/lib/Makefile b/arch/arm/lib/Makefile
+index 6889e7e498..05f79b9f47 100644
+--- a/arch/arm/lib/Makefile
++++ b/arch/arm/lib/Makefile
+@@ -7,7 +7,7 @@
+ lib-y		:= backtrace.o changebit.o csumipv6.o csumpartial.o   \
+ 		   csumpartialcopy.o csumpartialcopyuser.o clearbit.o \
+ 		   delay.o delay-loop.o findbit.o memchr.o memcpy.o   \
+-		   memmove.o memset.o setbit.o                        \
++		   memmove.o memset.o setbit.o memzero.o              \
+ 		   strchr.o strrchr.o                                 \
+ 		   testchangebit.o testclearbit.o testsetbit.o        \
+ 		   ashldi3.o ashrdi3.o lshrdi3.o muldi3.o             \
