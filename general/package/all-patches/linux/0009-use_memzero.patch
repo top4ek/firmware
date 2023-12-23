@@ -1,0 +1,33 @@
+--- a/arch/arm/include/asm/string.h
++++ b/arch/arm/include/asm/string.h
+@@ -29,6 +29,7 @@
+ #define __HAVE_ARCH_MEMSET
+ extern void * memset(void *, int, __kernel_size_t);
+ extern void *__memset(void *s, int c, __kernel_size_t n);
++extern void __memzero(void *ptr, __kernel_size_t n);
+ 
+ /*
+  * For files that are not instrumented (e.g. mm/slub.c) we
+
+--- a/arch/arm/boot/compressed/string.c
++++ b/arch/arm/boot/compressed/string.c
+@@ -148,3 +148,8 @@
+ 		*xs++ = c;
+ 	return s;
+ }
++
++void __memzero(void *s, size_t count)
++{
++	memset(s, 0, count);
++}
+
+--- a/arch/arm/kernel/armksyms.c
++++ b/arch/arm/kernel/armksyms.c
+@@ -90,6 +90,7 @@
+ EXPORT_SYMBOL(memcpy);
+ EXPORT_SYMBOL(memmove);
+ EXPORT_SYMBOL(memchr);
++EXPORT_SYMBOL(__memzero);
+ 
+ EXPORT_SYMBOL(mmioset);
+ EXPORT_SYMBOL(mmiocpy);
